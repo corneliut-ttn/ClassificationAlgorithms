@@ -1,5 +1,7 @@
 package com.classifiers.bayesnaive;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.HashMap;
@@ -123,6 +125,7 @@ public class BayesNaive {
                 answer=presumptions[i];
             }
         }
-        System.out.printf(answer);
+        System.out.println("Classification for data"+testData.toString()+" is :");
+        System.out.println("=>>"+answer);
     }
 }
