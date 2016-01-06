@@ -3,13 +3,20 @@ package com.classifiers;
 import com.classifiers.bayesnaive.BayesNaive;
 import com.classifiers.bayesnaive.TestData;
 import com.classifiers.bayesnaive.TrainingData;
+import com.classifiers.hierarchical.HierarchicalClustering;
 import com.classifiers.kmeans.KMeans;
 
 public class Main {
 
     public static void main(String[] args) {
         //testNaiveBayes();
-        testKMeans();
+        //testKMeans();
+        testHierarchial();
+    }
+
+    public static void testHierarchial(){
+        HierarchicalClustering hc=new HierarchicalClustering(20);
+        hc.initialize();
     }
 
     public static void testKMeans(){
