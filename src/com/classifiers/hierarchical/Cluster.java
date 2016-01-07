@@ -1,7 +1,5 @@
 package com.classifiers.hierarchical;
 
-import com.classifiers.kmeans.Point;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,11 +39,11 @@ public class Cluster {
 
     @Override
     public String toString() {
-        return "Cluster:" + id +"\n"+
+        return "Cluster: " + id.toString() +"\n"+
                 "[Points: " + points +"\n";
     }
 
-    public static double completeLinkageDistance(Cluster a,Cluster b){
+    public static double completeLinkageDistance(Cluster a,Cluster b) throws Exception {
         double max=Double.NEGATIVE_INFINITY;
         for (Point pointA : a.getPoints()) {
             for (Point pointB:b.getPoints()) {
@@ -57,7 +55,22 @@ public class Cluster {
         return max;
     }
 
-    public static double singleLinkageDistance(Cluster a,Cluster b){
+    public static double meanLinkageDistance(Cluster a,Cluster b) throws Exception {
+        double dist=0.0;
+        double sum=0.0;
+        for (Point pointA : a.getPoints()) {
+            sum=0.0;
+            for (Point pointB:b.getPoints()) {
+                double pointDist=Point.calculateDistance(pointA,pointB);
+                sum+=pointDist;
+            }
+            sum=sum/b.getPoints().size();
+            dist+=sum;
+        }
+        return dist/a.getPoints().size();
+    }
+
+    public static double singleLinkageDistance(Cluster a,Cluster b) throws Exception {
         double min=Double.POSITIVE_INFINITY;
         for (Point pointA : a.getPoints()) {
             for (Point pointB:b.getPoints()) {

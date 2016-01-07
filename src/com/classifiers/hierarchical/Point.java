@@ -1,4 +1,4 @@
-package com.classifiers.kmeans;
+package com.classifiers.hierarchical;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,14 +11,12 @@ import java.util.Random;
 public class Point {
 
     private double coordinates[];
-    private int cluster = 0;
 
     public Point(double coordinates[])
     {
         this.coordinates=new double[coordinates.length];
         this.coordinates=coordinates;
     }
-
 
     public double[] getCoordinates() {
         return coordinates;
@@ -28,21 +26,13 @@ public class Point {
         this.coordinates = coordinates;
     }
 
-    public void setCluster(int cluster) {
-        this.cluster = cluster;
-    }
-
-    public int getCluster() {
-        return this.cluster;
-    }
-
     public static double calculateDistance(Point p, Point q) throws Exception {
         if (testCoordinatesNr(p,q)){
             double dist=0.0;
             for (int i = 0; i < p.getCoordinates().length ; i++) {
                 dist+=Math.pow(q.getCoordinates()[i]-p.getCoordinates()[i],2);
             }
-            return Math.sqrt(dist);
+        return Math.sqrt(dist);
         }
         else throw new Exception("Invalid number of coordinates. \n"+p+"\n"+q);
     }

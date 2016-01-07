@@ -4,26 +4,50 @@ import com.classifiers.bayesnaive.BayesNaive;
 import com.classifiers.bayesnaive.TestData;
 import com.classifiers.bayesnaive.TrainingData;
 import com.classifiers.hierarchical.HierarchicalClustering;
+import com.classifiers.hierarchical.Point;
 import com.classifiers.kmeans.KMeans;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
         //testNaiveBayes();
-        //testKMeans();
-        testHierarchial();
+        testKMeans();
+        //testHierarchial();
     }
 
     public static void testHierarchial(){
-        HierarchicalClustering hc=new HierarchicalClustering(20);
+        HierarchicalClustering hc=new HierarchicalClustering(10,2);
         hc.initialize();
+        List<Point> listp=new ArrayList<Point>();
+        listp.add(new Point(new double[]{1, 1, 9}));
+        listp.add(new Point(new double[]{1, 2, 8}));
+        listp.add(new Point(new double[]{1, 3, 7}));
+        listp.add(new Point(new double[]{1, 4, 6}));
+        listp.add(new Point(new double[]{1, 5, 5}));
+        listp.add(new Point(new double[]{1, 6, 4}));
+        listp.add(new Point(new double[]{1, 7, 3}));
+        listp.add(new Point(new double[]{1, 8, 2}));
+        listp.add(new Point(new double[]{1, 9, 1}));
+        //hc.setPoints(listp);
+        try {
+            hc.classify(-1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void testKMeans(){
-        KMeans kMeans=new KMeans(3,21);
+        KMeans kMeans=new KMeans(3,21,4);
         kMeans.initialize();
         kMeans.showPoints();
-        kMeans.classify();
+        try {
+            kMeans.classify();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void testNaiveBayes(){
