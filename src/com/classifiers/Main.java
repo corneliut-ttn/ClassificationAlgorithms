@@ -6,6 +6,7 @@ import com.classifiers.bayesnaive.TrainingData;
 import com.classifiers.hierarchical.HierarchicalClustering;
 import com.classifiers.hierarchical.Point;
 import com.classifiers.kmeans.KMeans;
+import com.classifiers.knn.Knn;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +15,20 @@ public class Main {
 
     public static void main(String[] args) {
         //testNaiveBayes();
-        testKMeans();
+        //testKMeans();
         //testHierarchial();
+        testKnn();
+    }
+
+    public static void testKnn(){
+        String pressumptions[]={"+","-","*","#","&","$"};
+        Knn knn=new Knn(35,5,pressumptions,5);
+        knn.initialize();
+        try {
+            knn.classify(knn.generatePoint());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void testHierarchial(){
